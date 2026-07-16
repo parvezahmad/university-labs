@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gitops-web
+  template:
+    metadata:
+      labels:
+        app: gitops-web
+      annotations:
+        application-version: "v1"
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: website-content
+              mountPath: /usr/share/nginx/html
+              readOnly: true
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 5
+      volumes:
+        - name: website-content
+          configMap:
+            name: gitops-web-content
