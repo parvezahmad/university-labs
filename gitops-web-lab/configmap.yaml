@@ -29,7 +29,7 @@ data:
         <div class="card">
           <h1>Harness GitOps Website</h1>
           <h2>Version 2</h2>
-          <p>This application was deployed from GitHub using Harness GitOps.</p>
+          <p>This page was updated through Git and synchronized by Harness GitOps.</p>
         </div>
       </body>
     </html>

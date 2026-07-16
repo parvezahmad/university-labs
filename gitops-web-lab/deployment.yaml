@@ -12,7 +12,7 @@ spec:
       labels:
         app: gitops-web
       annotations:
-        application-version: "v1"
+        application-version: "v2"
     spec:
       containers:
         - name: nginx
